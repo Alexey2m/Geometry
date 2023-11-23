@@ -1,0 +1,46 @@
+﻿<Window x:Class="Geometry.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+
+        xmlns:local="clr-namespace:Geometry"
+        xmlns:vm="clr-namespace:Geometry.ViewModels"
+        
+        Title="MainWindow"
+        Height="400" Width="600"
+        WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip">
+
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+
+    <Window.InputBindings>
+        <KeyBinding Key="Q" Modifiers="Ctrl" Command="{Binding ExitClick}"/>
+        <KeyBinding Key="D" Modifiers="Ctrl" Command="{Binding DrawClick}"/>
+        <KeyBinding Key="C" Modifiers="Ctrl" Command="{Binding ClearClick}"/>
+    </Window.InputBindings>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0" IsMainMenu="True" Panel.ZIndex="1">
+            <MenuItem Header="Файл">
+                <Separator/>
+                <MenuItem Header="Выход" Command="{Binding ExitClick}" InputGestureText="Ctrl+Q"/>
+            </MenuItem>
+
+            <MenuItem Header="Рисование">
+                <MenuItem Header="Нарисовать" Command="{Binding DrawClick}" InputGestureText="Ctrl+D"/>
+                <Separator/>
+                <MenuItem Header="Очистить" Command="{Binding ClearClick}" InputGestureText="Ctrl+C"/>
+            </MenuItem>
+        </Menu>
+
+        <Canvas Grid.Row="1" x:Name="canvas"/>
+
+        <StatusBar Grid.Row="2"/>
+    </Grid>
+</Window>

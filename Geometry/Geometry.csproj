@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+	<ApplicationIcon>App/vs.ico</ApplicationIcon>
+    <Nullable>disable</Nullable>
+    <UseWPF>true</UseWPF>
+    <StartupObject>Geometry.App</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Page Remove="App\App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ApplicationDefinition Include="App\App.xaml" />
+  </ItemGroup>
+
+</Project>
